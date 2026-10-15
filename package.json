@@ -1,0 +1,36 @@
+{
+  "name": "aulaplan-mars",
+  "version": "1.0.0",
+  "description": "AulaPlan: gestion academica y generacion de horarios sin IA; extension IA pendiente.",
+  "main": "index.js",
+  "scripts": {
+    "dev:web": "npm run dev --workspace apps/web",
+    "build:web": "npm run build --workspace apps/web",
+    "generate:web": "npm run generate --workspace apps/web",
+    "typecheck:web": "npm run typecheck --workspace apps/web",
+    "dev:firebase": "node scripts/start_emulators.mjs",
+    "dev:api": "node scripts/start_api.mjs",
+    "dev": "concurrently -k -n FIREBASE,API,WEB -c auto \"npm:dev:firebase\" \"npm:dev:api\" \"npm:dev:web\"",
+    "prepare:functions": "python scripts/prepare_functions.py",
+    "test:api": "python -m pytest apps/api/tests -q"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.4"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcoARamirezS/aulaplan-mars.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/MarcoARamirezS/aulaplan-mars/issues"
+  },
+  "homepage": "https://github.com/MarcoARamirezS/aulaplan-mars#readme",
+  "private": true,
+  "workspaces": [
+    "apps/web"
+  ]
+}
